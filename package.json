@@ -1,0 +1,24 @@
+{
+  "name": "teamwork",
+  "version": "1.0.0",
+  "description": "Working on an employee's article page",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manzi-guev/Teamwork.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manzi-guev/Teamwork/issues"
+  },
+  "homepage": "https://github.com/manzi-guev/Teamwork#readme"
+}
