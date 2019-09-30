@@ -3,24 +3,110 @@
   <head>
     <title>Article Page</title>
     <link rel="stylesheet" href="../CSS/homepage.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale-1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   </head>
   <body>
     <div class="title">
       <div class="row">
-        <div>
-          <div id="content">
-            <h1>Perfect Article</h1>
-            <h3>
-              The only article app where you get to learn more about what's
-              happening around the world
-            </h3>
-            <p>Create an account or login and enjoy the showbiz world</p>
-            <hr />
-            <a href="loginpage.html" class="button"> Get Started</a>
+        <div id="content">
+          <h1 class="headers">Perfect Article</h1>
+          <h3>
+            The only article app where you get to learn more about what's
+            happening around the world
+          </h3>
+          <p>Create an account or login and enjoy the showbiz world</p>
+          <hr />
+          <button align="center" class="buttonOne" id="modalBtn">
+            Get Started
+          </button>
+          <button class="links" id="modalBtn1">Don't have an account?</button>
+        </div>
+        <div id="simpleModal" class="modal">
+          <div class="modal-content">
+            <span class="closedBtn">&times;</span>
+            <h1>LOGIN HERE</h1>
+            <form action="../HTML/userpage.html">
+              <input
+                type="text"
+                name="usernm"
+                placeholder="username"
+                class="input"
+                required
+              /><br /><br />
+              <input
+                type="password"
+                name="passwd"
+                placeholder="password"
+                class="input"
+                required
+              /><br /><br />
+              <div align="center">
+                <br />
+                <button class="button">SIGN IN</button>
+              </div>
+              <br /><br />
+            </form>
+          </div>
+        </div>
+        <div id="simpleModal1" class="modal1">
+          <div class="modal-content1">
+            <span class="closedBtn1">&times;</span>
+            <h1>Create a free account</h1>
+            <form action="../HTML/homepage.html">
+              <input
+                type="text"
+                name="fname"
+                placeholder="First Name"
+                class="input"
+                required
+              /><br /><br />
+              <input
+                type="text"
+                name="lname"
+                placeholder="Last Name"
+                class="input"
+                required
+              /><br /><br />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone"
+                class="input"
+                required
+              /><br /><br />
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                class="input"
+                required
+              /><br /><br />
+              <input
+                type="text"
+                name="usernm"
+                placeholder="username"
+                class="input"
+                required
+              /><br /><br />
+              <input
+                type="password"
+                name="passwd"
+                placeholder="password"
+                class="input"
+                required
+              /><br /><br />
+              <div align="center">
+                <br />
+                <button class="button">SUBMIT</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
+
+    <script src="../JS/main.js"></script>
   </body>
 </html>
