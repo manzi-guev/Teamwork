@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  background: rgba(150, 135, 134);
+  background: rgba(140, 69, 69);
   margin: 30px 50px;
   line-height: 1.4;
 }
@@ -35,21 +35,53 @@ body {
   background: rgba(0, 0, 0, 0.4);
   color: white;
 }
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: black;
+  color: white;
+}
+
+.previous {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+}
 .btn {
-  background: rgb(250, 155, 30);
+  background: rgb(40, 118, 201);
   border-radius: 20px;
-  color: lightgrey;
+  color: white;
   padding: 0.6rem 1.3rem;
   text-decoration: none;
   border: 0;
 }
+.btn:hover {
+  background-color: rgb(31, 95, 163);
+}
 .btn1 {
-  background: rgb(247, 59, 49);
+  background: rgb(230, 57, 48);
   border-radius: 20px;
-  color: lightgrey;
+  color: white;
   padding: 0.6rem 1.3rem;
   text-decoration: none;
   border: 0;
+}
+.btn1:hover {
+  background-color: rgb(189, 45, 38);
+}
+.btn2 {
+  background: rgb(81, 227, 70);
+  border-radius: 20px;
+  color: white;
+  padding: 0.3rem 1.3rem;
+  text-decoration: none;
+  border: 0;
+}
+.btn2:hover {
+  background-color: rgb(52, 148, 44);
 }
 .top-container {
   background-color: lightgrey;
