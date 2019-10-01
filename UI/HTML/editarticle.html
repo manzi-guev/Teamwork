@@ -8,13 +8,17 @@
   <div class="wrapper">
      <nav class="main-nav">
     <ul>
-      <li><a href="userpage.html">HOME</a></li>
-      <li><a href="viewarticle.html">BACK</a></li>
+     <!--  <li><a href="userpage.html">HOME</a></li>
+      <li><a href="viewarticle.html">BACK</a></li> -->
     </ul>
   </nav>
   <section class="top-container">
     <header class="showcase">
+    <div align="left"><a href="../HTML/viewarticle.html" class="previous">&laquo; BACK</a></div> 
     <h1>Edit your article here</h1>
+    <div align="right"><a href="../HTML/userpage.html" class="next">HOME &raquo;</a></div>
+
+
     </header>
   </section>
   <section class="boxes">
@@ -24,14 +28,14 @@
       <input type="text" name="" placeholder="edit article's title">
       <br>
         <p><b>Article's Title</b></p>
-        <input type="text" name="" placeholder="edit image">
+        <input type="file" name="" placeholder="edit image">
       <br>
         <p><b>Article's description</b></p>
         <input type="text" name="" placeholder="edit article's description">
       <br>
         <p><b>Article's content</b></p>
         <textarea placeholder="edit your article's content here" style="height:200px"></textarea>
-        <input type="submit" value="Edit">
+        <a href="../HTML/viewarticle.html" class="buttons" style="font-size: 1.3rem">Edit</a>
       </form>
       </div>
 </section>

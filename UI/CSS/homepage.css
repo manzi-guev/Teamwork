@@ -61,9 +61,10 @@ li a:hover:not(.active) {
   background-color: rgb(117, 104, 233);
 }
 
-h1 {
+.headers {
   font-weight: 700;
   font-size: 5em;
+  color: white;
 }
 h3 {
   font-weight: 400;
@@ -84,22 +85,178 @@ hr {
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
     0px 18px 23px rgba(0, 0, 0, 0.1);
 }
-.button {
+.buttonOne {
   background-color: rgb(96, 96, 199);
   color: white;
-  position: absolute;
-  right: 42%;
   padding: 12px 50px;
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  float: center;
 }
-.button:hover {
+.buttonOne:hover {
   background-color: rgb(38, 38, 100);
 }
 .active:hover {
   background-color: rgb(44, 100, 46);
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.model-content {
+  width: 40%;
+  height: 50%;
+  background-color: white;
+  border-radius: 4px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+.button {
+  background-color: #4caf50;
+  font-size: 1em;
+  border-radius: 30px;
+  color: white;
+  padding: 0.6rem 3rem;
+  text-decoration: none;
+  border: 0;
+}
+.links {
+  background-color: rgba(40, 212, 94);
+  font-size: 1em;
+  border-radius: 30px;
+  color: white;
+  padding: 0.6rem 3rem;
+  text-decoration: none;
+  border: 0;
+}
+.links:hover {
+  background-color: rgb(33, 163, 74);
+}
+.button1 {
+  background-color: rgb(247, 103, 103);
+  font-size: 1em;
+  border-radius: 30px;
+  color: white;
+  padding: 0.6rem 3rem;
+  text-decoration: none;
+  border: 0;
+}
+.button:hover {
+  background-color: #45a049;
+}
+.button1:hover {
+  background-color: rgb(247, 56, 49);
+}
+h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 50px;
+  color: rgba(0, 0, 0, 0.8);
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: white;
+  left: 320px;
+  top: 150px;
+  padding: 0;
+  margin: 0;
+  padding: 20px;
+  width: 50%;
+  height: 50%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: 1s;
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+}
+
+.closedBtn {
+  color: rgba(0, 0, 0, 0.4);
+  float: right;
+  font-size: 30px;
+}
+.closedBtn:hover,
+.closedBtn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal1 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content1 {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: white;
+  left: 320px;
+  top: 80px;
+  padding: 0;
+  margin: 0;
+  padding: 20px;
+  width: 50%;
+  height: 75%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: 1s;
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+}
+
+.closedBtn1 {
+  color: rgba(0, 0, 0, 0.4);
+  float: right;
+  font-size: 30px;
+}
+.closedBtn1:hover,
+.closedBtn1:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes modalopen1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @media (max-width: 500px) {
   .title {
@@ -113,6 +270,10 @@ hr {
   body {
     width: 100%;
     height: 100%;
+  }
+  .modal-content {
+    width: 100%;
+    height: 50%;
   }
 }
 @media (max-width: 400px) {
@@ -128,6 +289,10 @@ hr {
     width: 100%;
     height: 100%;
   }
+  .modal-content {
+    width: 100%;
+    height: 50%;
+  }
 }
 @media (max-width: 300px) {
   .title {
@@ -137,5 +302,9 @@ hr {
     position: center;
     margin: auto;
     padding: 10px;
+  }
+  .modal-content {
+    width: 100%;
+    height: 50%;
   }
 }
