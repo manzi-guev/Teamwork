@@ -20,6 +20,8 @@ Everyone in the world
 - Delete personal article
 - Edit personal article
 - View personal article
+- View specific colleagues articles
+- Share article
 
 # Entities
 
