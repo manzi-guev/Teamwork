@@ -36,7 +36,19 @@ const signup = {
     .trim()
     .required()
 };
-
+const signin = {
+  email: Joi.string()
+    .strict()
+    .trim()
+    .required()
+    .email(),
+  password: Joi.string()
+    .strict()
+    .trim()
+    .required()
+    .min(5)
+};
 export default {
-  '/api/v1/auth/signup': signup
+  '/api/v1/auth/signup': signup,
+  '/api/v1/auth/signin': signin
 };
