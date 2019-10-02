@@ -34,12 +34,11 @@ class userController {
           message: 'User created',
           data: newUser
         });
-      } else {
-        return res.status(409).json({
-          status: 409,
-          error: 'User already exists'
-        });
       }
+      return res.status(409).json({
+        status: 409,
+        error: 'User already exists'
+      });
     } catch (err) {}
   }
   static signin(req, res) {
@@ -53,12 +52,11 @@ class userController {
           token: tokengenerator(email),
           message: 'User successfully logged in'
         });
-      } else {
-        return res.status(404).json({
-          status: 404,
-          error: 'Not found'
-        });
       }
+      return res.status(404).json({
+        status: 404,
+        error: 'Not found'
+      });
     } catch (error) {
       return res.status(401).json({
         status: 401,
