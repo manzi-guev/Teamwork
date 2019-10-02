@@ -6,7 +6,8 @@ const validation = (req, res, next) => {
   const { path } = req.route;
   const method = req.method.toLowerCase();
 
-  if (supportedMethod.includes(method) && helping[path] != undefined) {
+  try {
+    supportedMethod.includes(method) && helping[path] != undefined;
     const schema = helping[path];
     return Joi.validate(req.body, schema, (error, data) => {
       if (error) {
@@ -18,7 +19,7 @@ const validation = (req, res, next) => {
       req.body = data;
       next();
     });
-  } else {
+  } catch (error) {
     res.status(405).json({
       status: 405,
       message: 'Method not defined'

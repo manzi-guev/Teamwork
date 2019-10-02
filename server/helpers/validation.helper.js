@@ -16,8 +16,8 @@ const signup = {
     .email(),
   password: Joi.string()
     .strict()
-    .trim()
     .required()
+    .trim()
     .min(5),
   gender: Joi.string()
     .strict()
