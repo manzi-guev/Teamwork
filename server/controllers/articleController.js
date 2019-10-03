@@ -40,6 +40,16 @@ class articleController {
       message: 'Article not found'
     });
   }
+  static viewSpecificArticle(req, res) {
+    const id = parseInt(req.params.id, 10);
+    let foundArticleIndex = articles.find(newArticle => newArticle.id === id);
+    if (foundArticleIndex) {
+      return res.status(200).json({
+        status: 200,
+        data: foundArticleIndex
+      });
+    }
+  }
 }
 
 export default articleController;
