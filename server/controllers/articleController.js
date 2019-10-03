@@ -25,6 +25,21 @@ class articleController {
       data: articles
     });
   }
+  static delete(req, res) {
+    const id = parseInt(req.params.id, 10);
+    let foundArticleIndex = articles.find(newArticle => newArticle.id === id);
+    if (foundArticleIndex) {
+      articles.splice(foundArticleIndex, 1);
+      return res.status(200).json({
+        status: 200,
+        message: 'article successfully deleted'
+      });
+    }
+    return res.status(400).json({
+      status: 400,
+      message: 'Article not found'
+    });
+  }
 }
 
 export default articleController;
