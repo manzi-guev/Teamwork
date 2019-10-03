@@ -18,6 +18,13 @@ class articleController {
       data: newArticle
     });
   }
+  static viewfeeds(req, res) {
+    return res.status(200).json({
+      status: 200,
+      message: 'success',
+      data: articles
+    });
+  }
 }
 
 export default articleController;
