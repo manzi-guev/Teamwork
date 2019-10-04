@@ -1,5 +1,7 @@
 # Teamwork
 
+[![Build Status](https://travis-ci.org/manzi-guev/Teamwork.svg?branch=devellop)](https://travis-ci.org/manzi-guev/Teamwork)
+
 ### Working on an employee's article page
 
 > What are we building?
