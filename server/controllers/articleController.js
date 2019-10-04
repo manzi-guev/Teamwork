@@ -1,5 +1,6 @@
 import articles from '../models/articles';
 import moment from 'moment';
+import assert from 'assert';
 
 class articleController {
   static create(req, res) {
@@ -19,9 +20,14 @@ class articleController {
     });
   }
   static viewfeeds(req, res) {
+    if (articles.length === 0) {
+        return res.status(404).json({
+          status: 404,
+          message: 'No article found'
+        });
+    }
     return res.status(200).json({
       status: 200,
-      message: 'success',
       data: articles
     });
   }
@@ -29,11 +35,11 @@ class articleController {
     const id = parseInt(req.params.id, 10);
     let foundArticleIndex = articles.find(newArticle => newArticle.id === id);
     if (foundArticleIndex) {
-      articles.splice(foundArticleIndex, 1);
-      return res.status(200).json({
-        status: 200,
-        message: 'article successfully deleted'
-      });
+        articles.splice(foundArticleIndex, 1);
+        return res.status(200).json({
+          status: 200,
+          message: 'article successfully deleted'
+        });
     }
     return res.status(400).json({
       status: 400,
@@ -44,11 +50,15 @@ class articleController {
     const id = parseInt(req.params.id, 10);
     let foundArticleIndex = articles.find(newArticle => newArticle.id === id);
     if (foundArticleIndex) {
-      return res.status(200).json({
-        status: 200,
-        data: foundArticleIndex
-      });
+        return res.status(200).json({
+          status: 200,
+          data: foundArticleIndex
+        });
     }
+    return res.status(400).json({
+      status: 400,
+      message: 'Article does not exist'
+    });
   }
 }
 
