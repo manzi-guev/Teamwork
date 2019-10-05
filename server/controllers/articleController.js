@@ -33,6 +33,12 @@ class articleController {
   }
   static delete(req, res) {
     const id = parseInt(req.params.id, 10);
+    if(!id){
+        return res.status(404).json({
+            status: 404,
+            message: 'Please enter a number and not a string'
+        })
+    }
     let foundArticleIndex = articles.find(newArticle => newArticle.id === id);
     if (foundArticleIndex) {
         articles.splice(foundArticleIndex, 1);
@@ -48,6 +54,12 @@ class articleController {
   }
   static viewSpecificArticle(req, res) {
     const id = parseInt(req.params.id, 10);
+    if(!id){
+        return res.status(404).json({
+            status: 404,
+            message: 'Please enter a number and not a string'
+        })
+    }
     let foundArticleIndex = articles.find(newArticle => newArticle.id === id);
     if (foundArticleIndex) {
         return res.status(200).json({
