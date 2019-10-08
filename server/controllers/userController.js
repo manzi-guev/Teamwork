@@ -1,8 +1,6 @@
 import users from '../models/users';
 import tokengenerator from '../helpers/token.helper';
 import bcrypt from 'bcrypt-nodejs';
-import valide from '../helpers/validation.helper';
-import Joi from '@hapi/joi';
 
 class userController {
   static signup(req, res) {
@@ -64,7 +62,7 @@ class userController {
       return res.status(500).json({
         status: 500,
         error: 'Internal Error'
-      })
+      });
     }
   }
 }

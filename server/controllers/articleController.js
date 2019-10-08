@@ -1,6 +1,5 @@
 import articles from '../models/articles';
 import moment from 'moment';
-import assert from 'assert';
 
 class articleController {
   static create(req, res) {
