@@ -1,4 +1,3 @@
-import comments from '../models/comments';
 import moment from 'moment';
 
 class commentController {
