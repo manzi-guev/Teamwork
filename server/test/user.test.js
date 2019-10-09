@@ -1,241 +1,108 @@
 import chai from 'chai';
-import chaihttp from 'chai-http';
-import app from '../app';
+import http from 'chai-http';
+import app from '../../app';
 
-chai.use(chaihttp);
+chai.use(http);
 chai.should();
 
-describe('User Test', () => {
-  describe('SignUp', () => {
-    it('Emloyee should signup', done => {
-      chai
-        .request(app)
-        .post('/api/v1/auth/signup')
-        .send({
-          firstname: 'Guevara',
-          lastname: 'Manzi',
-          email: 'manziguevara@gmail.com',
-          password: 'gege123',
-          gender: 'male',
-          jobRole: 'Student',
-          department: 'IT',
-          address: 'Gikondo'
-        })
-        .end((err, res) => {
-          res.should.have.status(201);
-          res.should.be.a('object');
-          done();
-        });
-    });
-    it('Emloyee already existing', done => {
-      chai
-        .request(app)
-        .post('/api/v1/auth/signup')
-        .send({
-          firstname: 'Guevara',
-          lastname: 'Manzi',
-          email: 'manziguevara@gmail.com',
-          password: 'gege123',
-          gender: 'male',
-          jobRole: 'Student',
-          department: 'IT',
-          address: 'Gikondo'
-        })
-        .end((err, res) => {
-          res.should.have.status(409);
-          res.should.be.a('object');
-          done();
-        });
-    });
-    it('Request validation', done => {
-      chai
-        .request(app)
-        .post('/api/v1/auth/signup/hello')
-        .send({
-          firstname: 'Guevara',
-          lastname: 'Manzi',
-          email: 'manziguevara@gmail.com',
-          password: 'gege123',
-          gender: 'male',
-          jobRole: 'Student',
-          department: 'IT',
-          address: 'Gikondo'
-        })
-        .end((err, res) => {
-          res.should.have.status(404);
-          res.should.be.a('object');
-          done();
-        });
-    });
-    it('Method validation', done => {
-      chai
-        .request(app)
-        .get('/api/v1/auth/signup')
-        .send({
-          firstname: 'Guevara',
-          lastname: 'Manzi',
-          email: 'manziguevara@gmail.com',
-          password: 'gege123',
-          gender: 'male',
-          jobRole: 'Student',
-          department: 'IT',
-          address: 'Gikondo'
-        })
-        .end((err, res) => {
-          res.should.have.status(404);
-          res.should.be.a('object');
-          done();
-        });
-    });
-  });
-  describe('Sign In', () => {
-    it('User must be able to sign in', done => {
-      chai
-        .request(app)
-        .post('/api/v1/auth/signin')
-        .send({
-          email: 'manguevara@gmail.com',
-          password: 'gege123'
-        })
-        .end((err, res) => {
-          res.should.have.status(401);
-          res.should.be.a('object');
-          done();
-        });
-    });
-    it('User already logged in', done => {
-      chai
-        .request(app)
-        .post('/api/v1/auth/signin')
-        .send({
-          email: 'manguevara@gmail.com',
-          password: 'gege123'
-        })
-        .end((err, res) => {
-          res.should.have.status(401);
-          res.should.be.a('object');
-          done();
-        });
-    });
-    it('User not found', done => {
-      chai
-        .request(app)
-        .post('/api/v1/auth/signin')
-        .send({
-          email: 'manguevara@gmail.com',
-          password: 'gege123'
-        })
-        .end((err, res) => {
-          res.should.have.status(401);
-          res.should.be.a('object');
-          done();
-        });
-    });
-    it('User using incorrect password', done => {
-      chai
-        .request(app)
-        .post('/api/v1/auth/signin')
-        .send({
-          email: 'manguevara@gmail.com',
-          password: 'gege123'
-        })
-        .end((err, res) => {
-          res.should.have.status(401);
-          res.should.be.a('object');
-          done();
-        });
-    });
-  });
-});
-describe('Article Test', () => {
-  it('Employee should create article', done => {
+const user = {
+  firstname: 'Nuru',
+  lastname: 'Niyigena',
+  email: 'abdoul@gmail.com',
+  password: 'nurureal',
+  gender: 'male',
+  jobRole: 'Student',
+  department: 'IT',
+  address: 'Kicukiro'
+};
+const login = {
+  email: 'abdoul@gmail.com',
+  password: 'nurureal'
+};
+const usercheck = {
+  email: 'abd@gmail.com',
+  password: 'nuru'
+};
+const usercatch = {
+  password: 'nurureal'
+};
+const articles = {
+  title: 'TESTS',
+  author: 'Rutakayile Doctor',
+  article: 'Hey there,am here to help out with the tests'
+};
+const articlecatch = {
+  author: 'Rutakayile Doctor'
+};
+describe('User Tests', () => {
+  it('User should create account', done => {
     chai
       .request(app)
-      .post('/api/v1/articles')
-      .send({
-        title: 'Its time to stop panicking',
-        author: 'Manzi Guevara',
-        article:
-          'When Karen joined the bootcamp, it was about time to stop panicking anytime something goes wrong'
-      })
+      .post('/api/v1/auth/signup')
+      .send(user)
       .end((err, res) => {
         res.should.have.status(201);
-        res.should.be.a('object');
+        res.body.should.have.property('message', 'User created');
+        res.body.should.have.property('token');
+        res.body.data.should.have.property('firstname', 'Nuru');
+        res.body.data.should.have.property('lastname', 'Niyigena');
+        res.body.data.should.have.property('email', 'abdoul@gmail.com');
         done();
       });
   });
-  it('Employee should delete article', done => {
+  it('Cannot create account if user already exists', done => {
     chai
       .request(app)
-      .delete('/api/v1/articles/:id')
-      .send({})
+      .post('/api/v1/auth/signup')
+      .send(user)
       .end((err, res) => {
-        res.should.have.status(400);
-        res.should.be.a('object');
+        res.should.have.status(409);
+        res.body.should.have.property('error', 'User already exists');
         done();
       });
   });
-  it('Employee deleting an article that doesnt exist', done => {
+  it('User must be able to login', done => {
     chai
       .request(app)
-      .delete('/api/v1/articles/:id')
-      .send({})
-      .end((err, res) => {
-        res.should.have.status(400);
-        res.should.be.a('object');
-        done();
-      });
-  });
-  it('Employee should view feeds', done => {
-    chai
-      .request(app)
-      .get('/api/v1/feeds')
-      .send({})
+      .post('/api/v1/auth/signin')
+      .send(login)
       .end((err, res) => {
         res.should.have.status(200);
-        res.should.be.a('object');
+        res.body.should.have.property('message', 'User successfully logged in');
         done();
       });
   });
-  it('Employee viewing whether feeds exist or not', done => {
+  it('When no email is passed', done => {
     chai
       .request(app)
-      .get('/api/v1/article/:id')
-      .send({})
+      .post('/api/v1/auth/signin')
+      .send(usercatch)
       .end((err, res) => {
-        res.should.have.status(404);
-        res.should.be.a('object');
+        res.should.have.status(400);
+        res.body.should.have.property('error', '"email" is required');
         done();
       });
   });
-  it('Employee should view specific article', done => {
+  it('Fiels required', done => {
     chai
       .request(app)
-      .get('/api/v1/article/:id')
-      .send({})
+      .post('/api/v1/auth/signup')
+      .send(usercatch)
       .end((err, res) => {
-        res.should.have.status(404);
-        res.should.be.a('object');
+        res.should.have.status(400);
+        res.body.should.have.property('error', '"firstname" is required');
         done();
       });
   });
-  it('Employee viewing specific article that doesnt exist', done => {
+  it('User doesnt exist', done => {
     chai
       .request(app)
-      .get('/api/v1/article/:id')
-      .send({})
+      .post('/api/v1/auth/signin')
+      .send(usercheck)
       .end((err, res) => {
-        res.should.have.status(404);
-        res.should.be.a('object');
+        res.should.have.status(401);
+        res.body.should.have.property('error', 'User doesnt exist');
         done();
       });
-  });
-});
-describe('Arrays', () => {
-  it('Users array should start empty', () => {
-    const users = [];
-  });
-  it('Articles array should start empty', () => {
-    const articles = [];
   });
 });
