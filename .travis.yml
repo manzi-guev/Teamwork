@@ -1,21 +1,13 @@
 sudo: false
+
 language: node_js
+
 node_js:
-  - "11.15.0"
-branches:
-  only:
-    - develop
-install:
-  - npm install
-  - npm install -g coveralls
-cache:
-  directories:
-    - node_modules
-env:
-  global:
-    secure: 
+  - node
+
 script:
-  - npm run test
-  
-after_success:
-  - npm run coveralls
+  - npm run lint
+  - npm run travis
+
+notifications:
+  email: false
