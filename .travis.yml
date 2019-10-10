@@ -11,9 +11,7 @@ install:
 cache:
   directories:
     - node_modules
-env:
-  global:
-    secure:
+env: DB=test
 script:
   - npm run test
 
