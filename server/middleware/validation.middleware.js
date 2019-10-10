@@ -72,11 +72,6 @@ const createArticle = (req, res, next) => {
       .strict()
       .trim()
       .required(),
-    author: Joi.string()
-      .strict()
-      .trim()
-      .required()
-      .min(5),
     article: Joi.string()
       .strict()
       .required()
@@ -91,4 +86,20 @@ const createArticle = (req, res, next) => {
   }
   next();
 };
-export { signUp, signIn, createArticle };
+const createComment = (req, res, next) => {
+  const schema = {
+    comment: Joi.string()
+      .strict()
+      .trim()
+      .required()
+  };
+  const output = Joi.validate(req.body, schema);
+  if (output.error != null) {
+    return res.status(400).json({
+      status: 400,
+      error: `${output.error.details[0].message}`
+    });
+  }
+  next();
+};
+export { signUp, signIn, createArticle, createComment };

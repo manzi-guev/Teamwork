@@ -1,9 +1,14 @@
 import chai from 'chai';
 import http from 'chai-http';
 import app from '../../app';
+import gentoken from '../helpers/token.helper';
+import jwt from '../middleware/token.middleware';
 
 chai.use(http);
 chai.should();
+
+const realtoken = gentoken('abdoul@gmail.com');
+const wrongtoken = gentoken('manziguevara@gmail.com');
 
 const user = {
   firstname: 'Nuru',
@@ -29,7 +34,6 @@ const usercatch = {
 
 const articles = {
   title: 'TESTS',
-  author: 'Rutakayile Doctor',
   article: 'Hey there,am here to help out with the tests'
 };
 const articlecatch = {
@@ -38,7 +42,13 @@ const articlecatch = {
 const articleupdate = {
   title: 'Real'
 };
-
+const commented = {
+  comment: 'Hey there, keep up the good work'
+};
+const emptycomment = {
+  comment: ''
+};
+const token = {};
 describe('User Tests', () => {
   it('User should create account', done => {
     chai
@@ -127,6 +137,7 @@ describe('Article Tests', () => {
     chai
       .request(app)
       .post('/api/v1/articles')
+      .set('token', realtoken)
       .send(articles)
       .end((err, res) => {
         res.should.have.status(201);
@@ -141,6 +152,7 @@ describe('Article Tests', () => {
     chai
       .request(app)
       .post('/api/v1/articles')
+      .set('token', realtoken)
       .send(articlecatch)
       .end((err, res) => {
         res.should.have.status(400);
@@ -189,6 +201,7 @@ describe('Article Tests', () => {
     chai
       .request(app)
       .patch('/api/v1/articles/' + id)
+      .set('token', realtoken)
       .send(articleupdate)
       .end((err, res) => {
         res.should.have.status(200);
@@ -204,6 +217,7 @@ describe('Article Tests', () => {
     chai
       .request(app)
       .delete('/api/v1/articles/' + id)
+      .set('token', realtoken)
       .send()
       .end((err, res) => {
         res.should.have.status(200);
@@ -219,6 +233,7 @@ describe('Article Tests', () => {
     chai
       .request(app)
       .delete('/api/v1/articles/' + id)
+      .set('token', realtoken)
       .send()
       .end((err, res) => {
         res.should.have.status(404);
@@ -231,10 +246,48 @@ describe('Article Tests', () => {
     chai
       .request(app)
       .delete('/api/v1/articles/' + id)
+      .set('token', realtoken)
       .send()
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.have.property('error', 'Article not found');
+        done();
+      });
+  });
+  it('Add a comment', done => {
+    chai
+      .request(app)
+      .post('/api/v1/comments')
+      .send(commented)
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.have.property('message', 'comment created');
+        done();
+      });
+  });
+  it('leaving comment empty', done => {
+    chai
+      .request(app)
+      .post('/api/v1/comments')
+      .send(emptycomment)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.have.property(
+          'error',
+          '"comment" is not allowed to be empty'
+        );
+        done();
+      });
+  });
+
+  it('No token found', done => {
+    chai
+      .request(app)
+      .post('/api/v1/articles')
+      .send()
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.have.property('error', 'No token found');
         done();
       });
   });
