@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npm run createtable && npm run createarticletable && npm run createcommenttable && --exec babel-node app.js",
     "start": "npm run createtable && npm run createarticletable && npm run createcommenttable && nodemon --exec babel-node app.js",
     "createcommenttable": "node --require babel-polyfill --require babel-register ./server/db/createcommenttable",
     "createtable": "node --require babel-polyfill --require babel-register ./server/db/createTable ",
