@@ -1,8 +1,10 @@
 import articles from '../models/articles';
 import connec from '../db/dbconnection';
+import taketoken from '../helpers/tokenverifier';
 class articleController {
   static async create(req, res) {
-    const { title, author, article } = req.body;
+    const { title, article } = req.body;
+    const author = taketoken(req.header('token'));
     const newArticle = await connec.query(articles.insertArticle, [
       title,
       author,
