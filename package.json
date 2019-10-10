@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run createtable && nodemon --exec babel-node app.js",
+    "start": "npm run createtable && npm run createarticletable && nodemon --exec babel-node app.js",
     "createtable": "node --require babel-polyfill --require babel-register ./server/db/createTable ",
+    "createarticletable": "node --require babel-polyfill --require babel-register ./server/db/createArticletable",
     "clean": "node --require babel-polyfill --require babel-register ./server/db/cleantables.js",
-    "test": "NODE_ENV=TEST npm run clean && NODE_ENV=TEST npm run createtable && NODE_ENV=TEST nyc --reporter=html --reporter=text --require babel-register --require babel-polyfill --require babel-register mocha --timeout 10000 ./server/test/user.test.js --exit"
+    "test": "NODE_ENV=TEST npm run clean && NODE_ENV=TEST npm run createtable && NODE_ENV=TEST npm run createarticletable && NODE_ENV=TEST nyc --reporter=html --reporter=text --require babel-register --require babel-polyfill --require babel-register mocha --timeout 10000 ./server/test/user.test.js --exit"
   },
   "author": "",
   "license": "ISC",
