@@ -11,9 +11,10 @@ install:
 cache:
   directories:
     - node_modules
-env:
-  global:
-    secure:
+before_script:
+  - plsql -c 'create database test;' -U postgres
+  - cat .config/travis.application.properties > src/main/resources/application.properties
+env: DB=test
 script:
   - npm run test
 
