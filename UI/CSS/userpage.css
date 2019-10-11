@@ -11,7 +11,7 @@ body {
 }
 
 .btn {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(40, 212, 94);
   color: lightgrey;
   padding: 0.6rem 2rem;
   text-decoration: none;
@@ -33,7 +33,7 @@ img {
   grid-template-columns: repeat(3, 1fr);
 }
 .main-nav a {
-  background: rgb(5, 182, 227);
+  background: rgb(40, 212, 94);
   display: block;
   text-decoration: none;
   padding: 0.8rem;

@@ -173,10 +173,10 @@ body {
   margin: 0;
 }
 .modal-content {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255);
   color: white;
   left: 320px;
-  top: 150px;
+  top: 170px;
   padding: 0;
   margin: 0;
   padding: 20px;
@@ -213,7 +213,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-content1 {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255);
   color: white;
   left: 320px;
   top: 80px;
@@ -258,6 +258,158 @@ body {
     opacity: 1;
   }
 }
+@media (max-width: 600px) {
+  .title {
+    width: 100%;
+    height: 50%;
+  }
+  .button {
+    position: fixed;
+    margin: auto;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  .modal-content {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 150px;
+    padding: 0;
+    margin: 0;
+    height: 70%;
+    width: 70%;
+    overflow: auto;
+    align-items: center;
+  }
+  .modal-content1 {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 90px;
+    padding: 0;
+    margin: 0;
+    height: 80%;
+    width: 70%;
+    overflow: auto;
+    align-items: center;
+  }
+}
+@media (max-width: 900px) {
+  .title {
+    width: 100%;
+    height: 50%;
+  }
+  .button {
+    position: fixed;
+    margin: auto;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  .modal-content {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 150px;
+    padding: 0;
+    margin: 0;
+    height: 70%;
+    width: 70%;
+    overflow: auto;
+    align-items: center;
+  }
+  .modal-content1 {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 90px;
+    padding: 0;
+    margin: 0;
+    height: 70%;
+    width: 70%;
+    overflow: auto;
+    align-items: center;
+  }
+}
+@media (max-width: 700px) {
+  .title {
+    width: 100%;
+    height: 50%;
+  }
+  .button {
+    position: fixed;
+    margin: auto;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  .modal-content {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 150px;
+    padding: 0;
+    margin: 0;
+    height: 70%;
+    width: 70%;
+    overflow: auto;
+    align-items: center;
+  }
+  .modal-content1 {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 90px;
+    padding: 0;
+    margin: 0;
+    height: 70%;
+    width: 70%;
+    overflow: auto;
+    align-items: center;
+  }
+}
+@media (max-width: 800px) {
+  .title {
+    width: 100%;
+    height: 50%;
+  }
+  .button {
+    position: fixed;
+    margin: auto;
+  }
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  .modal-content {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 150px;
+    padding: 0;
+    margin: 0;
+    height: 70%;
+    width: 70%;
+    overflow: auto;
+    align-items: center;
+  }
+  .modal-content1 {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 90px;
+    padding: 0;
+    margin: 0;
+    height: 70%;
+    width: 70%;
+    overflow: auto;
+    align-items: center;
+  }
+}
 @media (max-width: 500px) {
   .title {
     width: 100%;
@@ -272,10 +424,31 @@ body {
     height: 100%;
   }
   .modal-content {
-    width: 100%;
-    height: 50%;
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 150px;
+    padding: 0;
+    margin: 0;
+    height: 70%;
+    width: 70%;
+    overflow: auto;
+    align-content: center;
+  }
+  .modal-content1 {
+    position: fixed;
+    z-index: 1;
+    left: 100px;
+    top: 60px;
+    padding: 0;
+    margin: 0;
+    height: 90%;
+    width: 70%;
+    overflow: auto;
+    align-items: center;
   }
 }
+
 @media (max-width: 400px) {
   .title {
     width: 100%;
@@ -288,6 +461,10 @@ body {
   body {
     width: 100%;
     height: 100%;
+  }
+  .modal {
+    width: 100%;
+    height: 50%;
   }
   .modal-content {
     width: 100%;
@@ -302,6 +479,10 @@ body {
     position: center;
     margin: auto;
     padding: 10px;
+  }
+  .modal {
+    width: 100%;
+    height: 50%;
   }
   .modal-content {
     width: 100%;
